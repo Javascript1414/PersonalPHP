@@ -15,34 +15,34 @@ if(isset($_POST['register'])){
     $password = $_POST['password'];
     $confirm_password = $_POST['confirm_password'];
 
-    // 🔴 1. PASSWORD MATCH CHECK
+    // 1. PASSWORD MATCH CHECK
     if($password !== $confirm_password){
         echo "<script>alert('Password and Confirm Password do not match ❌');</script>";
         exit();
     }
 
-    // 🔴 2. AADHAAR VALIDATION (12 digit + numeric)
+    // 2. AADHAAR VALIDATION (12 digit + numeric)
     if(!preg_match('/^[0-9]{12}$/', $aadhaar)){
-        echo "<script>alert('Invalid Aadhaar Number ❌ (Must be 12 digits)');</script>";
+        echo "<script>alert('Invalid Aadhaar Number(Must be 12 digits)');</script>";
         exit();
     }
 
-    // 🔴 2.5 EMAIL VALIDATION
+    // 2.5 EMAIL VALIDATION
     if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-        echo "<script>alert('Invalid Email ❌');</script>";
+        echo "<script>alert('Invalid Email');</script>";
         exit();
     }
 
-    // 🔴 2.6 MOBILE VALIDATION
+    // 2.6 MOBILE VALIDATION
     if(!preg_match('/^[0-9]{10}$/', $mobile)){
         echo "<script>alert('Invalid Mobile Number ❌ (Must be 10 digits)');</script>";
         exit();
     }
 
-    // 🔴 3. HASH PASSWORD
+    // 3. HASH PASSWORD
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-    // 🔴 4. DUPLICATE CHECK
+    // 4. DUPLICATE CHECK
     $check = mysqli_query($conn,"SELECT * FROM students WHERE college_id='$college_id'");
 
     if(!$check){
@@ -73,7 +73,7 @@ if(isset($_POST['register'])){
     ('$college_id','$name','$email','$mobile','$dob','$aadhaar','$hashed_password')");
 
     if($result){
-        // 🔥 LOGIN LINK GENERATE
+        // LOGIN LINK GENERATE
         $loginLink = "http://localhost/PersonalPHP/Student/login.php?cid=".$college_id;
     } else {
         echo "<script>alert('Registration failed: " . mysqli_error($conn) . "');</script>";
@@ -150,7 +150,7 @@ if(isset($_POST['register'])){
 </form>
 <?php if($loginLink != "") { ?>
 <div class="alert alert-success mt-3">
-    Registration Successful ✅ <br>
+    Registration Successful<br>
     Your Login Link: <br>
     <a href="<?php echo $loginLink; ?>">
         Click Here to Login
@@ -201,7 +201,7 @@ document.getElementById("registerForm").addEventListener("submit", function(e){
     }
 
     // Allow the form to submit when validation succeeds
-    alert("Form Verified ✅ submitting registration...");
+    alert("Form Verified submitting registration...");
 });
 
 // first time load captcha

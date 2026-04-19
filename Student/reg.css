@@ -1,0 +1,56 @@
+body {
+    background: url('../Images/backgroundstu.jpg') no-repeat center center/cover; 
+    
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI';
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.register-box {
+    width: 380px;
+    padding: 30px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(15px);
+    color: white;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+input {
+    border-radius: 10px !important;
+}
+
+.btn-custom {
+    width: 100%;
+    border-radius: 20px;
+    background: linear-gradient(45deg,#00c6ff,#0072ff);
+    border: none;
+    color: white;
+}
+
+.btn-custom:hover {
+    opacity: 0.9;
+}
+
+.link {
+    color: yellow;
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 576px) {
+    body {
+        padding: 10px;
+    }
+
+    .register-box {
+        padding: 15px;
+    }
+}

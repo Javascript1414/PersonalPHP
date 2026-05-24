@@ -11,7 +11,7 @@ $conn = mysqli_connect(
 
 if(!$conn){
 
-    echo "Database Connection Failed";
+    die("❌ Database Connection Failed: " . mysqli_connect_error());
 
 }
 
